@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32526.322
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CockroachDbMvc", "CockroachDbMvc\CockroachDbMvc.csproj", "{2C3EF118-59B5-4B87-8DF8-EE55480314B3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2C3EF118-59B5-4B87-8DF8-EE55480314B3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C3EF118-59B5-4B87-8DF8-EE55480314B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C3EF118-59B5-4B87-8DF8-EE55480314B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C3EF118-59B5-4B87-8DF8-EE55480314B3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {86C9DD0C-712B-4656-9617-54F5889D50B8}
+	EndGlobalSection
+EndGlobal
