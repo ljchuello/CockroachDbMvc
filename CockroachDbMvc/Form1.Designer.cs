@@ -30,6 +30,9 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.lblResumen = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.ddlTabla = new System.Windows.Forms.ComboBox();
             this.btnConectar = new System.Windows.Forms.Button();
             this.txtPort = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -42,16 +45,18 @@
             this.txtServidor = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.ddlTabla = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.txtAux = new System.Windows.Forms.TextBox();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -60,6 +65,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.lblResumen);
             this.tabPage1.Controls.Add(this.label6);
             this.tabPage1.Controls.Add(this.ddlTabla);
             this.tabPage1.Controls.Add(this.btnConectar);
@@ -80,6 +86,33 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Configuración";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // lblResumen
+            // 
+            this.lblResumen.AutoSize = true;
+            this.lblResumen.Location = new System.Drawing.Point(305, 56);
+            this.lblResumen.Name = "lblResumen";
+            this.lblResumen.Size = new System.Drawing.Size(69, 15);
+            this.lblResumen.TabIndex = 13;
+            this.lblResumen.Text = "lblResumen";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(305, 12);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(70, 15);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "Tabla / Vista";
+            // 
+            // ddlTabla
+            // 
+            this.ddlTabla.FormattingEnabled = true;
+            this.ddlTabla.Location = new System.Drawing.Point(305, 30);
+            this.ddlTabla.Name = "ddlTabla";
+            this.ddlTabla.Size = new System.Drawing.Size(284, 23);
+            this.ddlTabla.TabIndex = 11;
+            this.ddlTabla.SelectedIndexChanged += new System.EventHandler(this.ddlTabla_SelectedIndexChanged);
             // 
             // btnConectar
             // 
@@ -173,30 +206,34 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.txtAux);
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(768, 398);
+            this.tabPage2.Size = new System.Drawing.Size(602, 398);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.Text = "Auxiliar";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // ddlTabla
+            // txtAux
             // 
-            this.ddlTabla.FormattingEnabled = true;
-            this.ddlTabla.Location = new System.Drawing.Point(305, 30);
-            this.ddlTabla.Name = "ddlTabla";
-            this.ddlTabla.Size = new System.Drawing.Size(284, 23);
-            this.ddlTabla.TabIndex = 11;
+            this.txtAux.Location = new System.Drawing.Point(6, 6);
+            this.txtAux.Multiline = true;
+            this.txtAux.Name = "txtAux";
+            this.txtAux.ReadOnly = true;
+            this.txtAux.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.txtAux.Size = new System.Drawing.Size(590, 386);
+            this.txtAux.TabIndex = 0;
             // 
-            // label6
+            // tabPage3
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(305, 12);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(70, 15);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Tabla / Vista";
+            this.tabPage3.Location = new System.Drawing.Point(4, 24);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(602, 398);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Complemento";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -209,6 +246,8 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -231,5 +270,8 @@
         private TabPage tabPage2;
         private Label label6;
         private ComboBox ddlTabla;
+        private Label lblResumen;
+        private TextBox txtAux;
+        private TabPage tabPage3;
     }
 }

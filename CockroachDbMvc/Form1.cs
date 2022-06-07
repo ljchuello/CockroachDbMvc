@@ -29,6 +29,9 @@ namespace CockroachDbMvc
                 txtServidor.Text = npgsqlConnectionStringBuilder.Host;
                 txtPort.Text = $"{npgsqlConnectionStringBuilder.Port}";
             }
+
+            // Set
+            lblResumen.Text = string.Empty;
         }
 
         private void btnConectar_Click(object sender, EventArgs e)
@@ -72,6 +75,85 @@ namespace CockroachDbMvc
             catch (Exception ex)
             {
                 MessageBox.Show($"{ex.Message}");
+            }
+        }
+
+        private void ddlTabla_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                List<Estructura> list = new List<Estructura>();
+
+                NpgsqlConnectionStringBuilder npgsqlConnectionStringBuilder = new NpgsqlConnectionStringBuilder();
+                npgsqlConnectionStringBuilder.Host = txtServidor.Text;
+                npgsqlConnectionStringBuilder.Port = Convert.ToInt32(txtPort.Text);
+                npgsqlConnectionStringBuilder.SslMode = SslMode.Require;
+                npgsqlConnectionStringBuilder.Username = txtUsuario.Text;
+                npgsqlConnectionStringBuilder.Password = txtContrasenia.Text;
+                npgsqlConnectionStringBuilder.Database = txtBaseDatos.Text;
+                npgsqlConnectionStringBuilder.TrustServerCertificate = true;
+
+                using (NpgsqlConnection db = new NpgsqlConnection(npgsqlConnectionStringBuilder.ToString()))
+                {
+                    db.Open();
+                    NpgsqlCommand npgsqlCommand = new NpgsqlCommand();
+                    npgsqlCommand.Connection = db;
+                    npgsqlCommand.CommandType = CommandType.Text;
+                    npgsqlCommand.CommandText = $"SHOW COLUMNS FROM \"{ddlTabla.SelectedItem}\";";
+                    using (NpgsqlDataReader npgsqlDataReader = npgsqlCommand.ExecuteReader())
+                    {
+                        while (npgsqlDataReader.Read())
+                        {
+                            Estructura estructura = new Estructura();
+                            estructura.Nombre = $"{npgsqlDataReader["column_name"]}";
+                            estructura.TipoBd = $"{npgsqlDataReader["data_type"]}";
+                            list.Add(estructura);
+                        }
+                    }
+                }
+
+                // Seteamos
+                foreach (var row in list)
+                {
+                    switch (row.TipoBd)
+                    {
+                        case string a when row.TipoBd.Contains("VARCHAR"):
+                        case string b when row.TipoBd.Contains("STRING"):
+                            row.TipoDotNet = "string";
+                            break;
+
+                        case string a when row.TipoBd.Contains("INT"):
+                            row.TipoDotNet = "int";
+                            break;
+
+                        case string a when row.TipoBd.Contains("DECIMAL"):
+                            row.TipoDotNet = "decimal";
+                            break;
+
+                        case string a when row.TipoBd.Contains("TIMESTAMP"):
+                            row.TipoDotNet = "DateTime";
+                            break;
+
+                        case string a when row.TipoBd.Contains("BOOL"):
+                            row.TipoDotNet = "bool";
+                            break;
+
+                        default:
+                            MessageBox.Show($"El tipo de dato ({row.TipoBd}) no se encuentra ='(");
+                            return;
+                    }   
+                }
+
+                string json = JsonConvert.SerializeObject(list, Formatting.Indented);
+
+                txtAux.Text = Auxiliar.Generar($"{ddlTabla.SelectedItem}", list);
+
+                // Libre de pecados
+                lblResumen.Text = $"Se ha generado {ddlTabla.SelectedItem}";
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
             }
         }
     }
