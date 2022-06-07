@@ -11,9 +11,10 @@ namespace CockroachDbMvc
             {
                 StringBuilder stringBuilder = new StringBuilder();
                 stringBuilder.AppendLine($"// Aux{tabla}.cs");
-                stringBuilder.AppendLine("using System;");
                 stringBuilder.AppendLine("using System.Text;");
+                stringBuilder.AppendLine("using Npgsql;");
                 stringBuilder.AppendLine("");
+                stringBuilder.AppendLine("// ReSharper disable once CheckNamespace");
                 stringBuilder.AppendLine("namespace DataCloud");
                 stringBuilder.AppendLine("{");
 
@@ -27,7 +28,7 @@ namespace CockroachDbMvc
                 stringBuilder.AppendLine($"    public class Aux{tabla}");
                 stringBuilder.AppendLine("    {");
 
-                stringBuilder.AppendLine($"        private const string Select = \"SELECT {string.Join(", ", campos.Select(x => $"\\\"{x.Nombre}\\\""))} FROM \\\"{tabla}\\\"\";");
+                stringBuilder.AppendLine($"        public const string Select = \"SELECT {string.Join(", ", campos.Select(x => $"\\\"{x.Nombre}\\\""))} FROM \\\"{tabla}\\\"\";");
                 stringBuilder.AppendLine("");
 
                 #region Campos
@@ -109,8 +110,8 @@ namespace CockroachDbMvc
                     {
                         ++iteracion;
                         stringBuilder.AppendLine(iteracion != campos.Count
-                            ? $"            stringBuilder.AppendLine($\"'{{_poolConexion.Remplazar({Cadena.PriMin(tabla)}.{row.Nombre})}}', -- {row.Nombre} | {row.TipoBd} | {row.TipoDotNet}\");"
-                            : $"            stringBuilder.AppendLine($\"'{{_poolConexion.Remplazar({Cadena.PriMin(tabla)}.{row.Nombre})}}'); -- {row.Nombre} | {row.TipoBd} | {row.TipoDotNet}\");");
+                            ? $"            stringBuilder.AppendLine($\"'{{Conexion.Remplazar({Cadena.PriMin(tabla)}.{row.Nombre})}}', -- {row.Nombre} | {row.TipoBd} | {row.TipoDotNet}\");"
+                            : $"            stringBuilder.AppendLine($\"'{{Conexion.Remplazar({Cadena.PriMin(tabla)}.{row.Nombre})}}'); -- {row.Nombre} | {row.TipoBd} | {row.TipoDotNet}\");");
                     }
 
                     stringBuilder.AppendLine($"            return stringBuilder.ToString();");
@@ -137,14 +138,14 @@ namespace CockroachDbMvc
                         {
                             iteracion = iteracion + 1;
                             stringBuilder.AppendLine(iteracion != listUpdate01.Count
-                                ? $"            stringBuilder.AppendLine($\"\\\"{row.Nombre}\\\" = '{{_poolConexion.Remplazar({Cadena.PriMin(tabla)}.{row.Nombre})}}', -- {row.Nombre} | {row.TipoBd} | {row.TipoDotNet}\");"
-                                : $"            stringBuilder.AppendLine($\"\\\"{row.Nombre}\\\" = '{{_poolConexion.Remplazar({Cadena.PriMin(tabla)}.{row.Nombre})}}' -- {row.Nombre} | {row.TipoBd} | {row.TipoDotNet}\");");
+                                ? $"            stringBuilder.AppendLine($\"\\\"{row.Nombre}\\\" = '{{Conexion.Remplazar({Cadena.PriMin(tabla)}.{row.Nombre})}}', -- {row.Nombre} | {row.TipoBd} | {row.TipoDotNet}\");"
+                                : $"            stringBuilder.AppendLine($\"\\\"{row.Nombre}\\\" = '{{Conexion.Remplazar({Cadena.PriMin(tabla)}.{row.Nombre})}}' -- {row.Nombre} | {row.TipoBd} | {row.TipoDotNet}\");");
                         }
 
                         // Where
                         stringBuilder.AppendLine($"            stringBuilder.AppendLine(\"WHERE\");");
                         var rowUpdate = campos.FirstOrDefault(x => x.Nombre.ToLower() == "id") ?? new Estructura();
-                        stringBuilder.AppendLine($"            stringBuilder.AppendLine($\"{rowUpdate.Nombre} = '{{_poolConexion.Remplazar({Cadena.PriMin(tabla)}.{rowUpdate.Nombre})}}'; -- {rowUpdate.Nombre} | {rowUpdate.TipoBd} | {rowUpdate.TipoDotNet}\");");
+                        stringBuilder.AppendLine($"            stringBuilder.AppendLine($\"{rowUpdate.Nombre} = '{{Conexion.Remplazar({Cadena.PriMin(tabla)}.{rowUpdate.Nombre})}}'; -- {rowUpdate.Nombre} | {rowUpdate.TipoBd} | {rowUpdate.TipoDotNet}\");");
                         stringBuilder.AppendLine($"            return stringBuilder.ToString();");
                         stringBuilder.AppendLine($"        }}");
                     }
@@ -163,7 +164,7 @@ namespace CockroachDbMvc
                         stringBuilder.AppendLine($"            stringBuilder.AppendLine(\"--  Delete {tabla}\");");
                         stringBuilder.AppendLine($"            stringBuilder.AppendLine(\"DELETE FROM \\\"{tabla}\\\" WHERE\");");
                         var rowDelete = campos.FirstOrDefault(x => x.Nombre.ToLower() == "id") ?? new Estructura();
-                        stringBuilder.AppendLine($"            stringBuilder.AppendLine($\"\\\"{rowDelete.Nombre}\\\" = '{{_poolConexion.Remplazar({Cadena.PriMin(tabla)}.{rowDelete.Nombre})}}'; -- {rowDelete.Nombre} | {rowDelete.TipoBd} | {rowDelete.TipoDotNet}\");");
+                        stringBuilder.AppendLine($"            stringBuilder.AppendLine($\"\\\"{rowDelete.Nombre}\\\" = '{{Conexion.Remplazar({Cadena.PriMin(tabla)}.{rowDelete.Nombre})}}'; -- {rowDelete.Nombre} | {rowDelete.TipoBd} | {rowDelete.TipoDotNet}\");");
                         stringBuilder.AppendLine($"            return stringBuilder.ToString();");
                         stringBuilder.AppendLine($"        }}");
                         stringBuilder.AppendLine($"");
@@ -183,7 +184,7 @@ namespace CockroachDbMvc
                 stringBuilder.AppendLine("\n        #region Maker");
 
                 stringBuilder.AppendLine($"");
-                stringBuilder.AppendLine($"        private {tabla} Maker(MySqlDataReader dtReader)");
+                stringBuilder.AppendLine($"        public {tabla} Maker(NpgsqlDataReader dtReader)");
                 stringBuilder.AppendLine($"        {{");
                 stringBuilder.AppendLine($"            " +
                                          $"{tabla} {Cadena.PriMin(tabla)} = new {tabla}();");
