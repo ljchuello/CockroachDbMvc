@@ -145,7 +145,7 @@ namespace CockroachDbMvc
                         // Where
                         stringBuilder.AppendLine($"            stringBuilder.AppendLine(\"WHERE\");");
                         var rowUpdate = campos.FirstOrDefault(x => x.Nombre.ToLower() == "id") ?? new Estructura();
-                        stringBuilder.AppendLine($"            stringBuilder.AppendLine($\"{rowUpdate.Nombre} = '{{Conexion.Remplazar({Cadena.PriMin(tabla)}.{rowUpdate.Nombre})}}'; -- {rowUpdate.Nombre} | {rowUpdate.TipoBd} | {rowUpdate.TipoDotNet}\");");
+                        stringBuilder.AppendLine($"            stringBuilder.AppendLine($\"\\\"{rowUpdate.Nombre}\\\" = '{{Conexion.Remplazar({Cadena.PriMin(tabla)}.{rowUpdate.Nombre})}}'; -- {rowUpdate.Nombre} | {rowUpdate.TipoBd} | {rowUpdate.TipoDotNet}\");");
                         stringBuilder.AppendLine($"            return stringBuilder.ToString();");
                         stringBuilder.AppendLine($"        }}");
                     }
