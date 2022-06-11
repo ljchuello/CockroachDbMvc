@@ -1,5 +1,6 @@
 using System.Data;
 using System.Globalization;
+using System.Text;
 using Newtonsoft.Json;
 using Npgsql;
 
@@ -141,12 +142,13 @@ namespace CockroachDbMvc
                         default:
                             MessageBox.Show($"El tipo de dato ({row.TipoBd}) no se encuentra ='(");
                             return;
-                    }   
+                    }
                 }
 
                 string json = JsonConvert.SerializeObject(list, Formatting.Indented);
 
                 txtAux.Text = Auxiliar.Generar($"{ddlTabla.SelectedItem}", list);
+                txtVista.Text = Vista.Generar($"{ddlTabla.SelectedItem}", list);
 
                 // Libre de pecados
                 lblResumen.Text = $"Se ha generado {ddlTabla.SelectedItem}";
@@ -155,6 +157,93 @@ namespace CockroachDbMvc
             {
                 Console.WriteLine(ex);
             }
+        }
+
+        private int iteracion = 0;
+
+        private async void button1_Click(object sender, EventArgs e)
+        {
+            await Task.Run(() =>
+            {
+                while (true)
+                {
+                    try
+                    {
+                        NpgsqlConnectionStringBuilder npgsqlConnectionStringBuilder = new NpgsqlConnectionStringBuilder();
+                        npgsqlConnectionStringBuilder.Host = "44.193.111.154";
+                        npgsqlConnectionStringBuilder.Port = 26257;
+                        npgsqlConnectionStringBuilder.SslMode = SslMode.Disable;
+                        npgsqlConnectionStringBuilder.Username = "root";
+                        npgsqlConnectionStringBuilder.Password = "";
+                        npgsqlConnectionStringBuilder.Database = "defaultdb";
+                        npgsqlConnectionStringBuilder.TrustServerCertificate = true;
+
+                        StringBuilder stringBuilder = new StringBuilder();
+
+                        NpgsqlConnection mySqlConnection = new NpgsqlConnection();
+
+                        // Fumo
+                        if (iteracion == 0)
+                        {
+                            mySqlConnection = new NpgsqlConnection();
+                            mySqlConnection.ConnectionString = npgsqlConnectionStringBuilder.ToString();
+                            mySqlConnection.Open();
+                            using (var db = mySqlConnection)
+                            {
+                                NpgsqlCommand sqlCommand = new NpgsqlCommand();
+                                sqlCommand.Connection = db;
+                                sqlCommand.CommandText = "SELECT COUNT(\"Id\") FROM \"Usuario\";";
+                                sqlCommand.CommandType = CommandType.Text;
+                                using (NpgsqlDataReader npgsqlDataReader = sqlCommand.ExecuteReader())
+                                {
+                                    while (npgsqlDataReader.Read())
+                                    {
+                                        iteracion = Convert.ToInt32(npgsqlDataReader["count"]);
+                                    }
+                                }
+                            }
+                        }
+
+                        for (int i = 1; i <= 1000; i++)
+                        {
+                            iteracion = iteracion + 1;
+                            Text = $"{iteracion:n0}";
+                            stringBuilder.AppendLine($"INSERT INTO \"Usuario\" (\"Id\", \"Correo\", \"Contrasenia\") VALUES ('{iteracion:d36}', 'ljchuello.{iteracion}@gmail.com', '{Guid.NewGuid()}');");
+                        }
+
+                        string query = stringBuilder.ToString();
+
+                        mySqlConnection = new NpgsqlConnection();
+                        mySqlConnection.ConnectionString = npgsqlConnectionStringBuilder.ToString();
+                        mySqlConnection.Open();
+                        using (var db = mySqlConnection)
+                        {
+                            DateTime a = DateTime.Now;
+                            NpgsqlCommand sqlCommand = new NpgsqlCommand();
+                            sqlCommand.Connection = db;
+                            sqlCommand.CommandText = query;
+                            sqlCommand.CommandType = CommandType.Text;
+                            sqlCommand.ExecuteNonQuery();
+                            DateTime b = DateTime.Now;
+                            button1.Text = $"{(b - a).TotalSeconds:n3}";
+                        }
+                    }
+                    catch (Exception exception)
+                    {
+                        Console.WriteLine(exception);
+                    }
+                }
+            });
+        }
+
+        private void Convertidor_Click(object sender, EventArgs e)
+        {
+            string text = txtConverter.Text;
+            text = text.Replace("\\n", "");
+            text = text.Replace("\\", string.Empty);
+            text = text.Replace("\n", "\n\\n");
+            //Clipboard.SetText(text);
+            txtConverter.Text = text;
         }
     }
 }
