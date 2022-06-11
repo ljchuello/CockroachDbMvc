@@ -268,7 +268,7 @@ namespace CockroachDbMvc
                 stringBuilder.AppendLine($"$\"\\n{lines[i]}\"+");
             }
 
-            //Clipboard.SetText(text);
+            Clipboard.SetText(stringBuilder.ToString());
 
             txtConverter.Text = stringBuilder.ToString();
         }
