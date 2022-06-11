@@ -239,11 +239,38 @@ namespace CockroachDbMvc
         private void Convertidor_Click(object sender, EventArgs e)
         {
             string text = txtConverter.Text;
-            text = text.Replace("\\n", "");
-            text = text.Replace("\\", string.Empty);
-            text = text.Replace("\n", "\n\\n");
+            text = text.Replace("  ", "");
+            text = text.Replace("\"", "\\\"");
+
+            var lines = text.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
+
+            StringBuilder stringBuilder = new StringBuilder();
+
+            // $"\n
+
+            for (int i = 0; i < lines.Length; i++)
+            {
+                // Primero
+                if (i == 0)
+                {
+                    stringBuilder.AppendLine($"$\"\\n{lines[i]}\"+");
+                    continue;
+                }
+
+                // Ultimo
+                if (i == lines.Length-1)
+                {
+                    stringBuilder.Append($"$\"\\n{lines[i]}\";");
+                    continue;
+                }
+
+                // Medio
+                stringBuilder.AppendLine($"$\"\\n{lines[i]}\"+");
+            }
+
             //Clipboard.SetText(text);
-            txtConverter.Text = text;
+
+            txtConverter.Text = stringBuilder.ToString();
         }
     }
 }
