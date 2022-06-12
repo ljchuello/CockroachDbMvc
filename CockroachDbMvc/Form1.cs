@@ -253,7 +253,7 @@ namespace CockroachDbMvc
                 // Primero
                 if (i == 0)
                 {
-                    stringBuilder.AppendLine($"$\"\\n{lines[i]}\"+");
+                    stringBuilder.AppendLine($"$\"{lines[i]}\"+");
                     continue;
                 }
 
