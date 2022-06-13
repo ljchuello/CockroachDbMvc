@@ -149,6 +149,7 @@ namespace CockroachDbMvc
 
                 txtAux.Text = Auxiliar.Generar($"{ddlTabla.SelectedItem}", list);
                 txtVista.Text = Vista.Generar($"{ddlTabla.SelectedItem}", list);
+                txtDto.Text = Dto.Generar($"{ddlTabla.SelectedItem}", list);
 
                 // Libre de pecados
                 lblResumen.Text = $"Se ha generado {ddlTabla.SelectedItem}";
