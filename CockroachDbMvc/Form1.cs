@@ -171,63 +171,20 @@ namespace CockroachDbMvc
                     try
                     {
                         NpgsqlConnectionStringBuilder npgsqlConnectionStringBuilder = new NpgsqlConnectionStringBuilder();
-                        npgsqlConnectionStringBuilder.Host = "44.193.111.154";
+                        npgsqlConnectionStringBuilder.Host = "127.0.0.1";
                         npgsqlConnectionStringBuilder.Port = 26257;
-                        npgsqlConnectionStringBuilder.SslMode = SslMode.Disable;
+                        npgsqlConnectionStringBuilder.SslMode = SslMode.Require;
                         npgsqlConnectionStringBuilder.Username = "root";
                         npgsqlConnectionStringBuilder.Password = "";
                         npgsqlConnectionStringBuilder.Database = "defaultdb";
+                        npgsqlConnectionStringBuilder.RootCertificate = @"D:\CockroachDb\certs\ca.crt";
                         npgsqlConnectionStringBuilder.TrustServerCertificate = true;
 
                         StringBuilder stringBuilder = new StringBuilder();
 
-                        NpgsqlConnection mySqlConnection = new NpgsqlConnection();
+                        NpgsqlConnection mySqlConnection = new NpgsqlConnection(npgsqlConnectionStringBuilder.ToString());
 
-                        // Fumo
-                        if (iteracion == 0)
-                        {
-                            mySqlConnection = new NpgsqlConnection();
-                            mySqlConnection.ConnectionString = npgsqlConnectionStringBuilder.ToString();
-                            mySqlConnection.Open();
-                            using (var db = mySqlConnection)
-                            {
-                                NpgsqlCommand sqlCommand = new NpgsqlCommand();
-                                sqlCommand.Connection = db;
-                                sqlCommand.CommandText = "SELECT COUNT(\"Id\") FROM \"Usuario\";";
-                                sqlCommand.CommandType = CommandType.Text;
-                                using (NpgsqlDataReader npgsqlDataReader = sqlCommand.ExecuteReader())
-                                {
-                                    while (npgsqlDataReader.Read())
-                                    {
-                                        iteracion = Convert.ToInt32(npgsqlDataReader["count"]);
-                                    }
-                                }
-                            }
-                        }
-
-                        for (int i = 1; i <= 1000; i++)
-                        {
-                            iteracion = iteracion + 1;
-                            Text = $"{iteracion:n0}";
-                            stringBuilder.AppendLine($"INSERT INTO \"Usuario\" (\"Id\", \"Correo\", \"Contrasenia\") VALUES ('{iteracion:d36}', 'ljchuello.{iteracion}@gmail.com', '{Guid.NewGuid()}');");
-                        }
-
-                        string query = stringBuilder.ToString();
-
-                        mySqlConnection = new NpgsqlConnection();
-                        mySqlConnection.ConnectionString = npgsqlConnectionStringBuilder.ToString();
                         mySqlConnection.Open();
-                        using (var db = mySqlConnection)
-                        {
-                            DateTime a = DateTime.Now;
-                            NpgsqlCommand sqlCommand = new NpgsqlCommand();
-                            sqlCommand.Connection = db;
-                            sqlCommand.CommandText = query;
-                            sqlCommand.CommandType = CommandType.Text;
-                            sqlCommand.ExecuteNonQuery();
-                            DateTime b = DateTime.Now;
-                            button1.Text = $"{(b - a).TotalSeconds:n3}";
-                        }
                     }
                     catch (Exception exception)
                     {
