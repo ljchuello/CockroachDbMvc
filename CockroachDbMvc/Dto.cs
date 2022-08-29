@@ -38,11 +38,6 @@ namespace CockroachDbMvc
                     stringBuilder.AppendLine("");
                 }
 
-                foreach (var row in campos)
-                {
-                    stringBuilder.AppendLine($"oOut.{row.Nombre} = oIn.{row.Nombre};");
-                }
-
                 return stringBuilder.ToString();
             }
             catch (Exception ex)

@@ -54,12 +54,15 @@
             this.txtConverter = new System.Windows.Forms.TextBox();
             this.DTO = new System.Windows.Forms.TabPage();
             this.txtDto = new System.Windows.Forms.TextBox();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.txtinOut = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.DTO.SuspendLayout();
+            this.tabPage5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -69,6 +72,7 @@
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.DTO);
+            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -319,6 +323,26 @@
             this.txtDto.Size = new System.Drawing.Size(590, 386);
             this.txtDto.TabIndex = 0;
             // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.txtinOut);
+            this.tabPage5.Location = new System.Drawing.Point(4, 24);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(602, 398);
+            this.tabPage5.TabIndex = 5;
+            this.tabPage5.Text = "In Out";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // txtinOut
+            // 
+            this.txtinOut.Location = new System.Drawing.Point(6, 6);
+            this.txtinOut.Multiline = true;
+            this.txtinOut.Name = "txtinOut";
+            this.txtinOut.ReadOnly = true;
+            this.txtinOut.Size = new System.Drawing.Size(590, 386);
+            this.txtinOut.TabIndex = 0;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -338,6 +362,8 @@
             this.tabPage4.PerformLayout();
             this.DTO.ResumeLayout(false);
             this.DTO.PerformLayout();
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -370,5 +396,7 @@
         private TextBox txtVista;
         private TabPage DTO;
         private TextBox txtDto;
+        private TabPage tabPage5;
+        private TextBox txtinOut;
     }
 }
