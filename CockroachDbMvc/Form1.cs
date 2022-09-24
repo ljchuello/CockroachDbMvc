@@ -42,11 +42,11 @@ namespace CockroachDbMvc
                 NpgsqlConnectionStringBuilder npgsqlConnectionStringBuilder = new NpgsqlConnectionStringBuilder();
                 npgsqlConnectionStringBuilder.Host = txtServidor.Text;
                 npgsqlConnectionStringBuilder.Port = Convert.ToInt32(txtPort.Text);
-                npgsqlConnectionStringBuilder.SslMode = SslMode.Require;
                 npgsqlConnectionStringBuilder.Username = txtUsuario.Text;
                 npgsqlConnectionStringBuilder.Password = txtContrasenia.Text;
                 npgsqlConnectionStringBuilder.Database = txtBaseDatos.Text;
                 npgsqlConnectionStringBuilder.TrustServerCertificate = true;
+                npgsqlConnectionStringBuilder.SslMode = !Cadena.Vacia(npgsqlConnectionStringBuilder.Password) ? SslMode.Require : SslMode.Disable;
 
                 List<string> tablas = new List<string>();
 
