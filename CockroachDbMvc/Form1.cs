@@ -123,11 +123,12 @@ namespace CockroachDbMvc
                             row.TipoDotNet = "string";
                             break;
 
-                        case string a when row.TipoBd.Contains("INT"):
-                            row.TipoDotNet = "int";
+                        case string a when row.TipoBd.Contains("INT8"):
+                            row.TipoDotNet = "long";
                             break;
 
                         case string a when row.TipoBd.Contains("DECIMAL"):
+                        case string b when row.TipoBd.Contains("FLOAT"):
                             row.TipoDotNet = "decimal";
                             break;
 
