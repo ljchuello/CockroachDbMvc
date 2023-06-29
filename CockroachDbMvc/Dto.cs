@@ -17,6 +17,9 @@ namespace CockroachDbMvc
                     {
                         case "int":
                             stringBuilder.AppendLine($"public int {row.Nombre} {{ set; get; }} = 0;\n");
+                            break;
+
+                        case "long":
                             stringBuilder.AppendLine($"public long {row.Nombre} {{ set; get; }} = 0;\n");
                             break;
 
