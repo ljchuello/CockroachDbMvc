@@ -28,344 +28,364 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
-            this.lblResumen = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.ddlTabla = new System.Windows.Forms.ComboBox();
-            this.btnConectar = new System.Windows.Forms.Button();
-            this.txtPort = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtBaseDatos = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtContrasenia = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtUsuario = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtServidor = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.txtAux = new System.Windows.Forms.TextBox();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.txtVista = new System.Windows.Forms.TextBox();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.Convertidor = new System.Windows.Forms.Button();
-            this.txtConverter = new System.Windows.Forms.TextBox();
-            this.DTO = new System.Windows.Forms.TabPage();
-            this.txtDto = new System.Windows.Forms.TextBox();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.txtinOut = new System.Windows.Forms.TextBox();
-            this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
-            this.tabPage4.SuspendLayout();
-            this.DTO.SuspendLayout();
-            this.tabPage5.SuspendLayout();
-            this.SuspendLayout();
+            tabControl1 = new TabControl();
+            tabPage1 = new TabPage();
+            label7 = new Label();
+            dllConexiones = new ComboBox();
+            button1 = new Button();
+            lblResumen = new Label();
+            label6 = new Label();
+            ddlTabla = new ComboBox();
+            btnConectar = new Button();
+            txtPort = new TextBox();
+            label5 = new Label();
+            txtBaseDatos = new TextBox();
+            label4 = new Label();
+            txtContrasenia = new TextBox();
+            label3 = new Label();
+            txtUsuario = new TextBox();
+            label2 = new Label();
+            txtServidor = new TextBox();
+            label1 = new Label();
+            tabPage2 = new TabPage();
+            txtAux = new TextBox();
+            tabPage3 = new TabPage();
+            txtVista = new TextBox();
+            tabPage4 = new TabPage();
+            Convertidor = new Button();
+            txtConverter = new TextBox();
+            DTO = new TabPage();
+            txtDto = new TextBox();
+            tabPage5 = new TabPage();
+            txtinOut = new TextBox();
+            tabControl1.SuspendLayout();
+            tabPage1.SuspendLayout();
+            tabPage2.SuspendLayout();
+            tabPage3.SuspendLayout();
+            tabPage4.SuspendLayout();
+            DTO.SuspendLayout();
+            tabPage5.SuspendLayout();
+            SuspendLayout();
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Controls.Add(this.DTO);
-            this.tabControl1.Controls.Add(this.tabPage5);
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(610, 426);
-            this.tabControl1.TabIndex = 0;
+            tabControl1.Controls.Add(tabPage1);
+            tabControl1.Controls.Add(tabPage2);
+            tabControl1.Controls.Add(tabPage3);
+            tabControl1.Controls.Add(tabPage4);
+            tabControl1.Controls.Add(DTO);
+            tabControl1.Controls.Add(tabPage5);
+            tabControl1.Location = new Point(12, 12);
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new Size(610, 426);
+            tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.button1);
-            this.tabPage1.Controls.Add(this.lblResumen);
-            this.tabPage1.Controls.Add(this.label6);
-            this.tabPage1.Controls.Add(this.ddlTabla);
-            this.tabPage1.Controls.Add(this.btnConectar);
-            this.tabPage1.Controls.Add(this.txtPort);
-            this.tabPage1.Controls.Add(this.label5);
-            this.tabPage1.Controls.Add(this.txtBaseDatos);
-            this.tabPage1.Controls.Add(this.label4);
-            this.tabPage1.Controls.Add(this.txtContrasenia);
-            this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.txtUsuario);
-            this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.txtServidor);
-            this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 24);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(602, 398);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Configuración";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            tabPage1.Controls.Add(label7);
+            tabPage1.Controls.Add(dllConexiones);
+            tabPage1.Controls.Add(button1);
+            tabPage1.Controls.Add(lblResumen);
+            tabPage1.Controls.Add(label6);
+            tabPage1.Controls.Add(ddlTabla);
+            tabPage1.Controls.Add(btnConectar);
+            tabPage1.Controls.Add(txtPort);
+            tabPage1.Controls.Add(label5);
+            tabPage1.Controls.Add(txtBaseDatos);
+            tabPage1.Controls.Add(label4);
+            tabPage1.Controls.Add(txtContrasenia);
+            tabPage1.Controls.Add(label3);
+            tabPage1.Controls.Add(txtUsuario);
+            tabPage1.Controls.Add(label2);
+            tabPage1.Controls.Add(txtServidor);
+            tabPage1.Controls.Add(label1);
+            tabPage1.Location = new Point(4, 24);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(602, 398);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "Configuración";
+            tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new Point(10, 12);
+            label7.Name = "label7";
+            label7.Size = new Size(69, 15);
+            label7.TabIndex = 16;
+            label7.Text = "Conexiones";
+            // 
+            // dllConexiones
+            // 
+            dllConexiones.FormattingEnabled = true;
+            dllConexiones.Location = new Point(10, 30);
+            dllConexiones.Name = "dllConexiones";
+            dllConexiones.Size = new Size(284, 23);
+            dllConexiones.TabIndex = 15;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(7, 369);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 14;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            button1.Location = new Point(7, 369);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 14;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // lblResumen
             // 
-            this.lblResumen.AutoSize = true;
-            this.lblResumen.Location = new System.Drawing.Point(305, 56);
-            this.lblResumen.Name = "lblResumen";
-            this.lblResumen.Size = new System.Drawing.Size(69, 15);
-            this.lblResumen.TabIndex = 13;
-            this.lblResumen.Text = "lblResumen";
+            lblResumen.AutoSize = true;
+            lblResumen.Location = new Point(305, 56);
+            lblResumen.Name = "lblResumen";
+            lblResumen.Size = new Size(69, 15);
+            lblResumen.TabIndex = 13;
+            lblResumen.Text = "lblResumen";
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(305, 12);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(70, 15);
-            this.label6.TabIndex = 12;
-            this.label6.Text = "Tabla / Vista";
+            label6.AutoSize = true;
+            label6.Location = new Point(305, 12);
+            label6.Name = "label6";
+            label6.Size = new Size(70, 15);
+            label6.TabIndex = 12;
+            label6.Text = "Tabla / Vista";
             // 
             // ddlTabla
             // 
-            this.ddlTabla.FormattingEnabled = true;
-            this.ddlTabla.Location = new System.Drawing.Point(305, 30);
-            this.ddlTabla.Name = "ddlTabla";
-            this.ddlTabla.Size = new System.Drawing.Size(284, 23);
-            this.ddlTabla.TabIndex = 11;
-            this.ddlTabla.SelectedIndexChanged += new System.EventHandler(this.ddlTabla_SelectedIndexChanged);
+            ddlTabla.FormattingEnabled = true;
+            ddlTabla.Location = new Point(305, 30);
+            ddlTabla.Name = "ddlTabla";
+            ddlTabla.Size = new Size(284, 23);
+            ddlTabla.TabIndex = 11;
+            ddlTabla.SelectedIndexChanged += ddlTabla_SelectedIndexChanged;
             // 
             // btnConectar
             // 
-            this.btnConectar.Location = new System.Drawing.Point(15, 235);
-            this.btnConectar.Name = "btnConectar";
-            this.btnConectar.Size = new System.Drawing.Size(284, 23);
-            this.btnConectar.TabIndex = 10;
-            this.btnConectar.Text = "Conectar";
-            this.btnConectar.UseVisualStyleBackColor = true;
-            this.btnConectar.Click += new System.EventHandler(this.btnConectar_Click);
+            btnConectar.Location = new Point(10, 279);
+            btnConectar.Name = "btnConectar";
+            btnConectar.Size = new Size(284, 23);
+            btnConectar.TabIndex = 10;
+            btnConectar.Text = "Conectar";
+            btnConectar.UseVisualStyleBackColor = true;
+            btnConectar.Click += btnConectar_Click;
             // 
             // txtPort
             // 
-            this.txtPort.Location = new System.Drawing.Point(15, 206);
-            this.txtPort.Name = "txtPort";
-            this.txtPort.Size = new System.Drawing.Size(284, 23);
-            this.txtPort.TabIndex = 9;
+            txtPort.Location = new Point(10, 250);
+            txtPort.Name = "txtPort";
+            txtPort.Size = new Size(284, 23);
+            txtPort.TabIndex = 9;
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(15, 188);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(42, 15);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Puerto";
+            label5.AutoSize = true;
+            label5.Location = new Point(10, 232);
+            label5.Name = "label5";
+            label5.Size = new Size(42, 15);
+            label5.TabIndex = 8;
+            label5.Text = "Puerto";
             // 
             // txtBaseDatos
             // 
-            this.txtBaseDatos.Location = new System.Drawing.Point(15, 162);
-            this.txtBaseDatos.Name = "txtBaseDatos";
-            this.txtBaseDatos.Size = new System.Drawing.Size(284, 23);
-            this.txtBaseDatos.TabIndex = 7;
+            txtBaseDatos.Location = new Point(10, 206);
+            txtBaseDatos.Name = "txtBaseDatos";
+            txtBaseDatos.Size = new Size(284, 23);
+            txtBaseDatos.TabIndex = 7;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 144);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(64, 15);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Base Datos";
+            label4.AutoSize = true;
+            label4.Location = new Point(10, 188);
+            label4.Name = "label4";
+            label4.Size = new Size(64, 15);
+            label4.TabIndex = 6;
+            label4.Text = "Base Datos";
             // 
             // txtContrasenia
             // 
-            this.txtContrasenia.Location = new System.Drawing.Point(15, 118);
-            this.txtContrasenia.Name = "txtContrasenia";
-            this.txtContrasenia.Size = new System.Drawing.Size(284, 23);
-            this.txtContrasenia.TabIndex = 5;
+            txtContrasenia.Location = new Point(10, 162);
+            txtContrasenia.Name = "txtContrasenia";
+            txtContrasenia.Size = new Size(284, 23);
+            txtContrasenia.TabIndex = 5;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 100);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 15);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Contraseña";
+            label3.AutoSize = true;
+            label3.Location = new Point(10, 144);
+            label3.Name = "label3";
+            label3.Size = new Size(67, 15);
+            label3.TabIndex = 4;
+            label3.Text = "Contraseña";
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(15, 74);
-            this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(284, 23);
-            this.txtUsuario.TabIndex = 3;
+            txtUsuario.Location = new Point(10, 118);
+            txtUsuario.Name = "txtUsuario";
+            txtUsuario.Size = new Size(284, 23);
+            txtUsuario.TabIndex = 3;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 56);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 15);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Usuario";
+            label2.AutoSize = true;
+            label2.Location = new Point(10, 100);
+            label2.Name = "label2";
+            label2.Size = new Size(47, 15);
+            label2.TabIndex = 2;
+            label2.Text = "Usuario";
             // 
             // txtServidor
             // 
-            this.txtServidor.Location = new System.Drawing.Point(15, 30);
-            this.txtServidor.Name = "txtServidor";
-            this.txtServidor.Size = new System.Drawing.Size(284, 23);
-            this.txtServidor.TabIndex = 1;
+            txtServidor.Location = new Point(10, 74);
+            txtServidor.Name = "txtServidor";
+            txtServidor.Size = new Size(284, 23);
+            txtServidor.TabIndex = 1;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 15);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Servidor";
+            label1.AutoSize = true;
+            label1.Location = new Point(10, 56);
+            label1.Name = "label1";
+            label1.Size = new Size(50, 15);
+            label1.TabIndex = 0;
+            label1.Text = "Servidor";
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.txtAux);
-            this.tabPage2.Location = new System.Drawing.Point(4, 24);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(602, 398);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Auxiliar";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            tabPage2.Controls.Add(txtAux);
+            tabPage2.Location = new Point(4, 24);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(602, 398);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "Auxiliar";
+            tabPage2.UseVisualStyleBackColor = true;
             // 
             // txtAux
             // 
-            this.txtAux.Location = new System.Drawing.Point(6, 6);
-            this.txtAux.Multiline = true;
-            this.txtAux.Name = "txtAux";
-            this.txtAux.ReadOnly = true;
-            this.txtAux.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtAux.Size = new System.Drawing.Size(590, 386);
-            this.txtAux.TabIndex = 0;
+            txtAux.Location = new Point(6, 6);
+            txtAux.Multiline = true;
+            txtAux.Name = "txtAux";
+            txtAux.ReadOnly = true;
+            txtAux.ScrollBars = ScrollBars.Both;
+            txtAux.Size = new Size(590, 386);
+            txtAux.TabIndex = 0;
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.txtVista);
-            this.tabPage3.Location = new System.Drawing.Point(4, 24);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(602, 398);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Vista";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            tabPage3.Controls.Add(txtVista);
+            tabPage3.Location = new Point(4, 24);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Padding = new Padding(3);
+            tabPage3.Size = new Size(602, 398);
+            tabPage3.TabIndex = 2;
+            tabPage3.Text = "Vista";
+            tabPage3.UseVisualStyleBackColor = true;
             // 
             // txtVista
             // 
-            this.txtVista.Location = new System.Drawing.Point(6, 6);
-            this.txtVista.Multiline = true;
-            this.txtVista.Name = "txtVista";
-            this.txtVista.ReadOnly = true;
-            this.txtVista.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtVista.Size = new System.Drawing.Size(590, 386);
-            this.txtVista.TabIndex = 0;
+            txtVista.Location = new Point(6, 6);
+            txtVista.Multiline = true;
+            txtVista.Name = "txtVista";
+            txtVista.ReadOnly = true;
+            txtVista.ScrollBars = ScrollBars.Vertical;
+            txtVista.Size = new Size(590, 386);
+            txtVista.TabIndex = 0;
             // 
             // tabPage4
             // 
-            this.tabPage4.Controls.Add(this.Convertidor);
-            this.tabPage4.Controls.Add(this.txtConverter);
-            this.tabPage4.Location = new System.Drawing.Point(4, 24);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(602, 398);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "c# / string";
-            this.tabPage4.UseVisualStyleBackColor = true;
+            tabPage4.Controls.Add(Convertidor);
+            tabPage4.Controls.Add(txtConverter);
+            tabPage4.Location = new Point(4, 24);
+            tabPage4.Name = "tabPage4";
+            tabPage4.Padding = new Padding(3);
+            tabPage4.Size = new Size(602, 398);
+            tabPage4.TabIndex = 3;
+            tabPage4.Text = "c# / string";
+            tabPage4.UseVisualStyleBackColor = true;
             // 
             // Convertidor
             // 
-            this.Convertidor.Location = new System.Drawing.Point(6, 6);
-            this.Convertidor.Name = "Convertidor";
-            this.Convertidor.Size = new System.Drawing.Size(222, 23);
-            this.Convertidor.TabIndex = 1;
-            this.Convertidor.Text = "Convertir string to c#";
-            this.Convertidor.UseVisualStyleBackColor = true;
-            this.Convertidor.Click += new System.EventHandler(this.Convertidor_Click);
+            Convertidor.Location = new Point(6, 6);
+            Convertidor.Name = "Convertidor";
+            Convertidor.Size = new Size(222, 23);
+            Convertidor.TabIndex = 1;
+            Convertidor.Text = "Convertir string to c#";
+            Convertidor.UseVisualStyleBackColor = true;
+            Convertidor.Click += Convertidor_Click;
             // 
             // txtConverter
             // 
-            this.txtConverter.Location = new System.Drawing.Point(6, 35);
-            this.txtConverter.Multiline = true;
-            this.txtConverter.Name = "txtConverter";
-            this.txtConverter.Size = new System.Drawing.Size(590, 357);
-            this.txtConverter.TabIndex = 0;
+            txtConverter.Location = new Point(6, 35);
+            txtConverter.Multiline = true;
+            txtConverter.Name = "txtConverter";
+            txtConverter.Size = new Size(590, 357);
+            txtConverter.TabIndex = 0;
             // 
             // DTO
             // 
-            this.DTO.Controls.Add(this.txtDto);
-            this.DTO.Location = new System.Drawing.Point(4, 24);
-            this.DTO.Name = "DTO";
-            this.DTO.Padding = new System.Windows.Forms.Padding(3);
-            this.DTO.Size = new System.Drawing.Size(602, 398);
-            this.DTO.TabIndex = 4;
-            this.DTO.Text = "DTO";
-            this.DTO.UseVisualStyleBackColor = true;
+            DTO.Controls.Add(txtDto);
+            DTO.Location = new Point(4, 24);
+            DTO.Name = "DTO";
+            DTO.Padding = new Padding(3);
+            DTO.Size = new Size(602, 398);
+            DTO.TabIndex = 4;
+            DTO.Text = "DTO";
+            DTO.UseVisualStyleBackColor = true;
             // 
             // txtDto
             // 
-            this.txtDto.Location = new System.Drawing.Point(6, 6);
-            this.txtDto.Multiline = true;
-            this.txtDto.Name = "txtDto";
-            this.txtDto.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtDto.Size = new System.Drawing.Size(590, 386);
-            this.txtDto.TabIndex = 0;
+            txtDto.Location = new Point(6, 6);
+            txtDto.Multiline = true;
+            txtDto.Name = "txtDto";
+            txtDto.ScrollBars = ScrollBars.Vertical;
+            txtDto.Size = new Size(590, 386);
+            txtDto.TabIndex = 0;
             // 
             // tabPage5
             // 
-            this.tabPage5.Controls.Add(this.txtinOut);
-            this.tabPage5.Location = new System.Drawing.Point(4, 24);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(602, 398);
-            this.tabPage5.TabIndex = 5;
-            this.tabPage5.Text = "In Out";
-            this.tabPage5.UseVisualStyleBackColor = true;
+            tabPage5.Controls.Add(txtinOut);
+            tabPage5.Location = new Point(4, 24);
+            tabPage5.Name = "tabPage5";
+            tabPage5.Padding = new Padding(3);
+            tabPage5.Size = new Size(602, 398);
+            tabPage5.TabIndex = 5;
+            tabPage5.Text = "In Out";
+            tabPage5.UseVisualStyleBackColor = true;
             // 
             // txtinOut
             // 
-            this.txtinOut.Location = new System.Drawing.Point(6, 6);
-            this.txtinOut.Multiline = true;
-            this.txtinOut.Name = "txtinOut";
-            this.txtinOut.ReadOnly = true;
-            this.txtinOut.Size = new System.Drawing.Size(590, 386);
-            this.txtinOut.TabIndex = 0;
+            txtinOut.Location = new Point(6, 6);
+            txtinOut.Multiline = true;
+            txtinOut.Name = "txtinOut";
+            txtinOut.ReadOnly = true;
+            txtinOut.Size = new Size(590, 386);
+            txtinOut.TabIndex = 0;
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(629, 450);
-            this.Controls.Add(this.tabControl1);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
-            this.tabPage4.ResumeLayout(false);
-            this.tabPage4.PerformLayout();
-            this.DTO.ResumeLayout(false);
-            this.DTO.PerformLayout();
-            this.tabPage5.ResumeLayout(false);
-            this.tabPage5.PerformLayout();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(629, 450);
+            Controls.Add(tabControl1);
+            Name = "Form1";
+            Text = "Form1";
+            tabControl1.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            tabPage1.PerformLayout();
+            tabPage2.ResumeLayout(false);
+            tabPage2.PerformLayout();
+            tabPage3.ResumeLayout(false);
+            tabPage3.PerformLayout();
+            tabPage4.ResumeLayout(false);
+            tabPage4.PerformLayout();
+            DTO.ResumeLayout(false);
+            DTO.PerformLayout();
+            tabPage5.ResumeLayout(false);
+            tabPage5.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion
@@ -398,5 +418,7 @@
         private TextBox txtDto;
         private TabPage tabPage5;
         private TextBox txtinOut;
+        private Label label7;
+        private ComboBox dllConexiones;
     }
 }

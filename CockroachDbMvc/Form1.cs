@@ -21,14 +21,10 @@ namespace CockroachDbMvc
             CultureInfo.DefaultThreadCurrentCulture = culture;
 
             // Existencia
-            if (File.Exists(@"D:\CockroachDB.json"))
+            dllConexiones.Items.Clear();
+            foreach (var row in Conexion.Leer())
             {
-                NpgsqlConnectionStringBuilder npgsqlConnectionStringBuilder = JsonConvert.DeserializeObject<NpgsqlConnectionStringBuilder>(File.ReadAllText(@"D:\CockroachDB.json")) ?? new NpgsqlConnectionStringBuilder();
-                txtUsuario.Text = npgsqlConnectionStringBuilder.Username;
-                txtContrasenia.Text = npgsqlConnectionStringBuilder.Password;
-                txtBaseDatos.Text = npgsqlConnectionStringBuilder.Database;
-                txtServidor.Text = npgsqlConnectionStringBuilder.Host;
-                txtPort.Text = $"{npgsqlConnectionStringBuilder.Port}";
+                dllConexiones.Items.Add(row.Host);
             }
 
             // Set
@@ -67,11 +63,20 @@ namespace CockroachDbMvc
                     }
                 }
 
+                // Ordenamos las tablas y le colocamos en el ddl
                 tablas = tablas.OrderBy(x => x).ToList();
-
                 ddlTabla.DataSource = tablas;
 
-                File.WriteAllText(@"D:\CockroachDB.json", JsonConvert.SerializeObject(npgsqlConnectionStringBuilder));
+                // Insertamos / actualizamos la conexión
+                Conexion conexion = new Conexion();
+                conexion.Host = npgsqlConnectionStringBuilder.Host;
+                conexion.Port = npgsqlConnectionStringBuilder.Port;
+                conexion.Username = npgsqlConnectionStringBuilder.Username;
+                conexion.Password = npgsqlConnectionStringBuilder.Password;
+                conexion.Database = npgsqlConnectionStringBuilder.Database;
+                conexion.TrustServerCertificate = npgsqlConnectionStringBuilder.TrustServerCertificate;
+                conexion.SslMode = npgsqlConnectionStringBuilder.SslMode;
+                Conexion.Insert(conexion);
             }
             catch (Exception ex)
             {
@@ -218,7 +223,7 @@ namespace CockroachDbMvc
                 }
 
                 // Ultimo
-                if (i == lines.Length-1)
+                if (i == lines.Length - 1)
                 {
                     stringBuilder.Append($"$\"\\n{lines[i]}\";");
                     continue;
