@@ -19,9 +19,9 @@ namespace CockroachDbMvc
             try
             {
                 // Existencia
-                if (File.Exists(@"C:\CockroachDB.json"))
+                if (File.Exists($"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\\CockroachDB.json"))
                 {
-                    List<Conexion> list = JsonConvert.DeserializeObject<List<Conexion>>(File.ReadAllText(@"C:\CockroachDB.json")) ?? new List<Conexion>();
+                    List<Conexion> list = JsonConvert.DeserializeObject<List<Conexion>>(File.ReadAllText($"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\\CockroachDB.json")) ?? new List<Conexion>();
                     return list;
                 }
                 else
@@ -40,13 +40,17 @@ namespace CockroachDbMvc
             // Obtenemos
             List<Conexion> list = Leer();
 
+            // Set
+            sql.Id = $"{sql.Database}@{sql.Host}";
+
             // Existe
-            if (list.Exists(x => x.Id == Base64.Codificar($"{sql.Host.ToLower()}{sql.Database.ToLower()}")))
+            // list.Exists(x => x.Id == Base64.Codificar($"{sql.Host.ToLower()}{sql.Database.ToLower()}"))
+            if (list.Exists(x => x.Id == $"{sql.Database}@{sql.Host}"))
             {
                 // Recorremos
                 for (int i = 0; i <= list.Count-1; i++)
                 {
-                    if (list[i].Id == Base64.Codificar($"{sql.Host.ToLower()}{sql.Database.ToLower()}"))
+                    if (list[i].Id == $"{sql.Database}@{sql.Host}")
                     {
                         list[i] = sql;
                     }
@@ -59,7 +63,7 @@ namespace CockroachDbMvc
             }
 
             // Grabamos
-            File.WriteAllText("C:\\CockroachDB.json", JsonConvert.SerializeObject(list, Formatting.Indented));
+            File.WriteAllText($"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\\CockroachDB.json", JsonConvert.SerializeObject(list, Formatting.Indented));
         }
     }
 }

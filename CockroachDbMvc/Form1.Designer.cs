@@ -31,7 +31,7 @@
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             label7 = new Label();
-            dllConexiones = new ComboBox();
+            ddlConexiones = new ComboBox();
             button1 = new Button();
             lblResumen = new Label();
             label6 = new Label();
@@ -84,7 +84,7 @@
             // tabPage1
             // 
             tabPage1.Controls.Add(label7);
-            tabPage1.Controls.Add(dllConexiones);
+            tabPage1.Controls.Add(ddlConexiones);
             tabPage1.Controls.Add(button1);
             tabPage1.Controls.Add(lblResumen);
             tabPage1.Controls.Add(label6);
@@ -117,13 +117,15 @@
             label7.TabIndex = 16;
             label7.Text = "Conexiones";
             // 
-            // dllConexiones
+            // ddlConexiones
             // 
-            dllConexiones.FormattingEnabled = true;
-            dllConexiones.Location = new Point(10, 30);
-            dllConexiones.Name = "dllConexiones";
-            dllConexiones.Size = new Size(284, 23);
-            dllConexiones.TabIndex = 15;
+            ddlConexiones.DropDownStyle = ComboBoxStyle.DropDownList;
+            ddlConexiones.FormattingEnabled = true;
+            ddlConexiones.Location = new Point(10, 30);
+            ddlConexiones.Name = "ddlConexiones";
+            ddlConexiones.Size = new Size(284, 23);
+            ddlConexiones.TabIndex = 15;
+            ddlConexiones.SelectedIndexChanged += ddlConexiones_SelectedIndexChanged;
             // 
             // button1
             // 
@@ -419,6 +421,6 @@
         private TabPage tabPage5;
         private TextBox txtinOut;
         private Label label7;
-        private ComboBox dllConexiones;
+        private ComboBox ddlConexiones;
     }
 }

@@ -21,10 +21,10 @@ namespace CockroachDbMvc
             CultureInfo.DefaultThreadCurrentCulture = culture;
 
             // Existencia
-            dllConexiones.Items.Clear();
+            ddlConexiones.Items.Clear();
             foreach (var row in Conexion.Leer())
             {
-                dllConexiones.Items.Add(row.Host);
+                ddlConexiones.Items.Add(row.Id);
             }
 
             // Set
@@ -77,6 +77,13 @@ namespace CockroachDbMvc
                 conexion.TrustServerCertificate = npgsqlConnectionStringBuilder.TrustServerCertificate;
                 conexion.SslMode = npgsqlConnectionStringBuilder.SslMode;
                 Conexion.Insert(conexion);
+
+                // Actualizamos ddl
+                ddlConexiones.Items.Clear();
+                foreach (var row in Conexion.Leer())
+                {
+                    ddlConexiones.Items.Add(row.Id);
+                }
             }
             catch (Exception ex)
             {
@@ -236,6 +243,28 @@ namespace CockroachDbMvc
             Clipboard.SetText(stringBuilder.ToString());
 
             txtConverter.Text = stringBuilder.ToString();
+        }
+
+        private void ddlConexiones_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Vacío
+            if (Cadena.Vacia($"{ddlConexiones.SelectedItem}"))
+            {
+                return;
+            }
+
+            // Leemos
+            var list = Conexion.Leer();
+
+            // Where
+            var row = list.Find(x => x.Id == $"{ddlConexiones.SelectedItem}");
+
+            // Llenamos
+            txtServidor.Text = row.Host;
+            txtUsuario.Text = row.Username;
+            txtContrasenia.Text = row.Password;
+            txtBaseDatos.Text = row.Database;
+            txtPort.Text = $"{row.Port}";
         }
     }
 }
