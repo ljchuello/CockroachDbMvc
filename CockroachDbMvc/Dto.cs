@@ -16,27 +16,27 @@ namespace CockroachDbMvc
                     switch (row.TipoDotNet)
                     {
                         case "int":
-                            stringBuilder.AppendLine($"public int {row.Nombre} {{ set; get; }} = 0;\n");
+                            stringBuilder.AppendLine($"public int {row.Nombre} {{ set; get; }} = 0;");
                             break;
 
                         case "long":
-                            stringBuilder.AppendLine($"public long {row.Nombre} {{ set; get; }} = 0;\n");
+                            stringBuilder.AppendLine($"public long {row.Nombre} {{ set; get; }} = 0;");
                             break;
 
                         case "decimal":
-                            stringBuilder.AppendLine($"public decimal {row.Nombre} {{ set; get; }} = 0;\n");
+                            stringBuilder.AppendLine($"public decimal {row.Nombre} {{ set; get; }} = 0;");
                             break;
 
                         case "bool":
-                            stringBuilder.AppendLine($"public bool {row.Nombre} {{ set; get; }} = false;\n");
+                            stringBuilder.AppendLine($"public bool {row.Nombre} {{ set; get; }} = false;");
                             break;
 
                         case "DateTime":
-                            stringBuilder.AppendLine($"public DateTime {row.Nombre} {{ set; get; }} = new DateTime(1900, 01, 01);\n");
+                            stringBuilder.AppendLine($"public DateTime {row.Nombre} {{ set; get; }} = new DateTime(1900, 01, 01);");
                             break;
 
                         default:
-                            stringBuilder.AppendLine($"public string {row.Nombre} {{ set; get; }} = string.Empty;\n");
+                            stringBuilder.AppendLine($"public string {row.Nombre} {{ set; get; }} = string.Empty;");
                             break;
                     }
                     stringBuilder.AppendLine("");
