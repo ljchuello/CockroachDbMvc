@@ -32,7 +32,7 @@ namespace CockroachDbMvc
                             break;
 
                         case "DateTime":
-                            stringBuilder.AppendLine($"public DateTime {row.Nombre} {{ set; get; }} = new DateTime(1900, 01, 01);");
+                            stringBuilder.AppendLine($"public DateTimeOffset {row.Nombre} {{ set; get; }} = new DateTime(1900, 01, 01);");
                             break;
 
                         default:
