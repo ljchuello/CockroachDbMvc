@@ -12,7 +12,7 @@ namespace CockroachDbMvc
 
                 foreach (var row in campos)
                 {
-                    stringBuilder.AppendLine($"[JsonProperty(\"{Cadena.PriMin(row.Nombre)}\")]");
+                    stringBuilder.AppendLine($"[JsonPropertyName(\"{Cadena.PriMin(row.Nombre)}\")]");
                     switch (row.TipoDotNet)
                     {
                         case "int":
