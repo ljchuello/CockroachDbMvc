@@ -119,6 +119,7 @@ namespace CockroachDbMvc
                         {
                             Estructura estructura = new Estructura();
                             estructura.Nombre = $"{npgsqlDataReader["column_name"]}";
+                            estructura.IsNull = Convert.ToBoolean(npgsqlDataReader["is_nullable"]);
                             estructura.TipoBd = $"{npgsqlDataReader["data_type"]}";
                             list.Add(estructura);
                         }
