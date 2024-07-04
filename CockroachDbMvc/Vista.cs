@@ -39,7 +39,8 @@ namespace CockroachDbMvc
                     switch (row.TipoDotNet)
                     {
                         case "int":
-                            stringBuilder.AppendLine($"        public int {row.Nombre} {{ set; get; }} = 0;\n");
+                        case "long":
+                            stringBuilder.AppendLine($"        public long {row.Nombre} {{ set; get; }} = 0;\n");
                             break;
 
                         case "decimal":
@@ -91,7 +92,8 @@ namespace CockroachDbMvc
                     switch (row.TipoDotNet)
                     {
                         case "int":
-                            stringBuilder.AppendLine($"            {Cadena.PriMin(tabla)}.{row.Nombre} = dtReader.IsDBNull(dtReader.GetOrdinal(\"{row.Nombre}\")) ? 0 : dtReader.GetInt32(dtReader.GetOrdinal(\"{row.Nombre}\"));");
+                        case "long":
+                            stringBuilder.AppendLine($"            {Cadena.PriMin(tabla)}.{row.Nombre} = dtReader.IsDBNull(dtReader.GetOrdinal(\"{row.Nombre}\")) ? 0 : dtReader.GetInt64(dtReader.GetOrdinal(\"{row.Nombre}\"));");
                             break;
 
                         case "decimal":
